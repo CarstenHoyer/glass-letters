@@ -116,36 +116,39 @@ const Scene = () => {
   const {
     viewport: { width },
   } = useThree();
+
+  const w = width / 12;
   return (
     <>
+      <OrbitControls target={[w, 10, 0]} />
       <PerspectiveCamera
         makeDefault
-        position={[8, 10, 50]}
+        position={[w, 10, 50]}
         fov={75}
-        lookAt={() => new Vector3(...[8, 10, 0])}
+        // lookAt={() => new Vector3(...[8, 10, 0])}
       />
       <Letter
         group={0}
         char={"A"}
-        position={[-width * 0.25, 0, 0]}
+        position={[-w * 4, 0, 0]}
         attractorPosition={[-width * 0.25 + 46, 0, 0]}
       />
       <Letter
         group={1}
         char={"K"}
-        position={[-width * 0.08, 0, 0]}
+        position={[-w * 1.25, 0, 0]}
         attractorPosition={[-width * 0.08 + 15, 0, 0]}
       />
       <Letter
         group={2}
         char={"Q"}
-        position={[width * 0.08, 0, 0]}
+        position={[w * 1.25, 0, 0]}
         attractorPosition={[width * 0.08 - 15, 0, 0]}
       />
       <Letter
         group={3}
         char={"A"}
-        position={[width * 0.25, 0, 0]}
+        position={[w * 4, 0, 0]}
         attractorPosition={[width * 0.25 - 48, 0, 0]}
       />
     </>
@@ -156,7 +159,6 @@ const App = () => {
   return (
     <Canvas style={{ backgroundColor: "black" }}>
       <Environment files="./brown_photostudio_02_1k.hdr" background />
-      <OrbitControls />
       <ambientLight />
       <pointLight position={[10, 10, 10]} castShadow={true} />
       <Physics gravity={[0, 0, 0]}>
